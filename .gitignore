@@ -1,0 +1,4 @@
+build*/
+rust/fm1-ffi/target/
+.DS_Store
+*.xcuserstate

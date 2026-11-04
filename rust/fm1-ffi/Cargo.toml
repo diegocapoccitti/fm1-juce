@@ -1,0 +1,28 @@
+[package]
+name = "fm1-ffi"
+description = "C interface to the fm1-emu machine (engine, resampler, saves) for the JUCE plugin"
+version = "0.4.0"
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+fm1-core = { path = "../../external/fm1-emu/crates/fm1-core" }
+fm1-soc = { path = "../../external/fm1-emu/crates/fm1-soc" }
+rtrb = "0.3"
+base64 = "0.22"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tempfile = "3"
+
+# its own workspace, outside fm1-emu's
+[workspace]
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "unwind"
